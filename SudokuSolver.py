@@ -1,5 +1,7 @@
+import sys
 # Helper function to print Grid
 def print_grid(grid):
+    print()
     for i in range(9):
         line = ''
         for j in range(9):
@@ -73,17 +75,37 @@ def solver(grid):
     # Trigger Backtracking
     return False
 
+# Helper function to make sure the input is correct
+def valid_input(line):
+    
+    # If more than 9 numbers entered show an error
+    if len(line) != 9:
+        print("Each line should be 9 numbers")
+        return False
+    
+    for num in line:
+        if not num.isdigit() or int(num) > 9:
+            return False
+    
+    return True
+
 if __name__ == "__main__":
     # Define 2D grid
-    grid = [[3,0,6,5,0,8,4,0,0], 
-            [5,2,0,0,0,0,0,0,0], 
-            [0,8,7,0,0,0,0,3,1], 
-            [0,0,3,0,1,0,0,8,0], 
-            [9,0,0,8,6,3,0,0,5], 
-            [0,5,0,0,9,0,6,0,0], 
-            [1,3,0,0,0,0,2,5,0], 
-            [0,0,0,0,0,0,0,7,4], 
-            [0,0,5,2,0,6,3,0,0]]
+    grid = list()
+
+    print("Please enter the 9x9 Soduku board, use 0 for empty square")
+    print("Seperate by space, enter a line then hit enter:")
+
+    # Read the Sudoko input
+    i = 0
+    while i < 9:
+        line = sys.stdin.readline().split()
+        if valid_input(line):
+            intline = [int(num) for num in line]
+            grid.append(intline)
+            i = i + 1
+        else:
+            print("input should be numbers between 0-9")
 
     if solver(grid):
         print_grid(grid)
