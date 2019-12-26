@@ -1,7 +1,7 @@
 import sys
 # Helper function to print Grid
 def print_grid(grid):
-    print()
+    print("")
     for i in range(9):
         line = ''
         for j in range(9):

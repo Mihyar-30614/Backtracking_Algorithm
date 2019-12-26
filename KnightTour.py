@@ -5,7 +5,7 @@ size = 8
 def printSolution(board):
     for i in range(size):
         for j in range(size):
-            print(board[i][j], end=' ')
+            print(str(board[i][j]).zfill(2), end=' ')
         print()
 
 # Helper function to check if i,j are in n*n board
